@@ -82,14 +82,5 @@ public class ArithmeticApp {
 	
 	
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		double resu = 0;
-		String stri = "13*5";
-		resu = recur(stri);
-		System.out.println(2*(3+-7));
-		
-		
-	}
 
 }
