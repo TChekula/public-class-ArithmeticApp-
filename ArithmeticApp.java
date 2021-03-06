@@ -34,8 +34,8 @@ public class ArithmeticApp {
 		double res = 0;
 		for(int i=0; i<exp.length(); i++) {
 			if(exp.charAt(i)=='(' && i>0) {
-				left = exp.substring(0,i-2);
-				right = exp.substring(i+1,exp.length()-1);
+				left = exp.substring(0,i-1);
+				right = exp.substring(i+1,exp.length());
 				op=exp.charAt(i-1);
 				lres=recur(left);
 				rres = recur(right);
@@ -44,7 +44,7 @@ public class ArithmeticApp {
 			}
 			else if(exp.charAt(i)==')' && i<exp.length()) {
 				left = exp.substring(0,i-2);
-				right = exp.substring(i+1,exp.length()-1);
+				right = exp.substring(i+1,exp.length());
 				op=exp.charAt(i-1);
 				lres=recur(left);
 				rres = recur(right);
@@ -56,8 +56,8 @@ public class ArithmeticApp {
 				
 			}
 			else if (exp.charAt(i)=='+' || (exp.charAt(i)=='-' && exp.charAt(i-1) !='-' && exp.charAt(i-1) !='+' && exp.charAt(i-1) !='*' && exp.charAt(i-1) !='/')) {
-				left = exp.substring(0,i-1);
-				right = exp.substring(i+1,exp.length()-1);
+				left = exp.substring(0,i);
+				right = exp.substring(i+1,exp.length());
 				op=exp.charAt(i);
 				lres=recur(left);
 				rres = recur(right);
@@ -65,8 +65,8 @@ public class ArithmeticApp {
 			}
 			else if (exp.charAt(i)=='*' || exp.charAt(i)=='/') {
 				op=exp.charAt(i);
-				left = exp.substring(0,i-1);
-				right = exp.substring(i+1,exp.length()-1);
+				left = exp.substring(0,i);
+				right = exp.substring(i+1,exp.length());
 				
 				lres = Double.parseDouble(left);
 				rres = recur(right);
