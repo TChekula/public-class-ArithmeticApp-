@@ -25,7 +25,13 @@ public class ArithmeticApp {
 	return result;
 	}
 	
-	public static String removeParenthesis(String str){
+	
+        for(int i=0; i<exp.length(); i++) {
+            if (exp.charAt(i)=='+' || (exp.charAt(i)=='-') && exp.charAt(i-1) !='-' && exp.charAt(i-1) !='+' && exp.charAt(i-1) !='*' && exp.charAt(i-1) !='/') {
+                left = exp.substring(0,i);
+                right = exp.substring(i+1,exp.length());
+                op=exp.charAt(i);
+                lres=solve(left);public static String removeParenthesis(String str){
 
         String newExp = "";
         double res;
@@ -52,7 +58,7 @@ public class ArithmeticApp {
         return newExp;
     }
 
-    public static double solve (String exp) {
+   public static double solve (String exp) {
         String left;
         String right;
         char op;
@@ -68,8 +74,12 @@ public class ArithmeticApp {
         if (exp.contains("(")){
             exp = removeParenthesis(exp);
         }
+        if(!(exp.contains("+") || exp.contains("*") || exp.contains("/") || exp.contains(")") || exp.contains("("))) {
+            res = Double.parseDouble(exp);
+            return res;
+        }
         for(int i=0; i<exp.length(); i++) {
-            if (exp.charAt(i)=='+' || (exp.charAt(i)=='-') && exp.charAt(i-1) !='-' && exp.charAt(i-1) !='+' && exp.charAt(i-1) !='*' && exp.charAt(i-1) !='/') {
+            if (exp.charAt(i)=='+' || (exp.charAt(i)=='-')) {
                 left = exp.substring(0,i);
                 right = exp.substring(i+1,exp.length());
                 op=exp.charAt(i);
@@ -90,12 +100,10 @@ public class ArithmeticApp {
             }
 
         }
-        if(!(exp.contains("+") || exp.contains("*") || exp.contains("/") || exp.contains(")") || exp.contains("("))) {
-            res = Double.parseDouble(exp);
-            return res;
-        }
+
         return res;
     }
+
 	
 
 
